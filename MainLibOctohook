@@ -57,7 +57,7 @@
             tooltip = rgb(73, 73, 73),
             misc_2 = rgb(23, 23, 28),
             font = "ProggyClean",
-            textsize = 12
+            textsize = 13
         },
         utility = {},
         gradients = {
@@ -5778,6 +5778,7 @@
 
                 Items.Camera = Library:Create( "Camera" , {
                     CameraType = Enum.CameraType.Track;
+                    FieldOfView = 60
                     Focus = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1);
                     Parent = Workspace;
                     CFrame = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1);
