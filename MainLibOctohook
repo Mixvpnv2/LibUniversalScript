@@ -5778,7 +5778,6 @@
 
                 Items.Camera = Library:Create( "Camera" , {
                     CameraType = Enum.CameraType.Track;
-                    FieldOfView = 60
                     Focus = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1);
                     Parent = Workspace;
                     CFrame = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1);
