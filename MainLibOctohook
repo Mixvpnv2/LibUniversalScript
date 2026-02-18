@@ -1,3 +1,5 @@
+-- old
+
 --[[
     Octohook
     -> Made by @finobe 
@@ -45,7 +47,7 @@
 
     local themes = {
         preset = {
-            inline = rgb(121, 65, 204),
+            inline = rgb(46, 46, 46),
             outline = rgb(10, 10, 15),
             accent = rgb(19, 128, 225),
             background = rgb(20, 20, 25),              
@@ -54,8 +56,8 @@
             unselected = rgb(145, 145, 145),
             tooltip = rgb(73, 73, 73),
             misc_2 = rgb(23, 23, 28),
-            font = "Rubik",
-            textsize = 13
+            font = "ProggyClean",
+            textsize = 12
         },
         utility = {},
         gradients = {
@@ -5779,7 +5781,6 @@
                     Focus = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1);
                     Parent = Workspace;
                     CFrame = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1);
-                    FieldOfView = 60
                     Name = "\0"
                 });
             end
@@ -7370,8 +7371,8 @@
             self.Section:Slider({
                 Name = "Max Render Distance", 
                 Min = 0, 
-                Max = 5000, 
-                Default = 5000, 
+                Max = 10000, 
+                Default = 10000, 
                 Decimal = 5,
                 Flag = Cfg.Name .. "_RENDER_DISTANCE",
                 Callback = function(int)
