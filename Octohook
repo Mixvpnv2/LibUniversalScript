@@ -193,25 +193,6 @@ Library:Configs(Holder, Tabs.Settings)
     for index,value in MiscOptions do 
         Options[index] = value -- gotta trigger that new index
     end
--- 
-
--- REMOVE: This is an example for testing healthbar tweening, remove if you wish to use. 
-    task.spawn(function()
-        while Esp do 
-            for _,player in Players:GetPlayers() do 
-                if not player.Character then 
-                    continue 
-                end 
-
-                if player.Character:FindFirstChild("Humanoid") then 
-                    player.Character.Humanoid.Health = math.random(1, 100)
-                end     
-            end 
-
-            task.wait(3)
-        end 
-    end) 
--- 
 
 for _,player in Players:GetPlayers() do 
     if player == LocalPlayer then 
