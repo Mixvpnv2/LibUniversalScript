@@ -3345,17 +3345,34 @@
                 Cfg.Tween(false)
             end)
 
-            Library:Connection(InputService.InputChanged, function(input)
-                if Items.Tooltip.Visible and input.UserInputType == Enum.UserInputType.MouseMovement and Library:Hovering(Items.Tooltip) then 
-                    Library:Tween(Items.Outline, {
-                        Position = dim_offset(input.Position.X, input.Position.Y + 86)
-                    }, TweenInfo.new(Library.DraggingSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0))
-                end
+-- Local replacement for the missing Hovering method
+local function isHovering(guiObject)
+    local UserInputService = game:GetService("UserInputService")
+    local mousePos = UserInputService:GetMouseLocation()
+    
+    local absPos = guiObject.AbsolutePosition
+    local absSize = guiObject.AbsoluteSize
+    
+    -- In Roblox, GetMouseLocation includes the top bar inset offset (~36px).
+    -- If your UI ignores GuiService.IgnoreGuiInset, you may need to adjust mousePos.Y
+    return (mousePos.X >= absPos.X and mousePos.X <= absPos.X + absSize.X) and
+           (mousePos.Y >= absPos.Y and mousePos.Y <= absPos.Y + absSize.Y)
+end
 
-                if (not Library:Hovering(Items.Tooltip)) and Cfg.Tweening == false and Items.Outline.Visible then 
-                    Cfg.Tween(false)   
-                end 
-            end)
+Library:Connection(InputService.InputChanged, function(input)
+    -- Check if the tooltip is visible and the mouse moved
+    if Items.Tooltip.Visible and input.UserInputType == Enum.UserInputType.MouseMovement and isHovering(Items.Tooltip) then 
+        Library:Tween(Items.Outline, {
+            Position = dim_offset(input.Position.X, input.Position.Y + 86)
+        }, TweenInfo.new(Library.DraggingSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0))
+    end
+
+    -- Close or reset if the mouse leaves the tooltip area
+    if (not isHovering(Items.Tooltip)) and Cfg.Tweening == false and Items.Outline.Visible then 
+        Cfg.Tween(false)   
+    end 
+end)
+
 
             Cfg.Tween(false)
 
